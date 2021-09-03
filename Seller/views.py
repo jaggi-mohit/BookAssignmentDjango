@@ -145,26 +145,12 @@ def myorder(request):
             x.save()
             
             y=SellerBooks.objects.get(id=i.id)
-            if y.Buyers !="":
-                if y.Buyers ==request.user.username:
-                    y.Buyers=request.user.username
-                    y.Items=i.Items+y.Items
-                    y.BuyerAddr=s.address
-                    y.Mobile=s.mobile
-                    y.Price=y.Price+i.sum
-                    y.save()
-                else:
-                    z=SellerBooks(BookName1=y.BookName1,Seller=y.Seller,Buyers=request.user.username,Price=y.Price,BuyerAddr=s.address,Mobile=s.mobile,Items=1)
-                    z.save()
-            else:
-                if y.Items==None:
-                    y.Items=1
-                else:
-                    y.Items=i.Items+y.Items
-                y.Buyers=request.user.username
-                y.BuyerAddr=s.address
-                y.Mobile=s.mobile
-                y.save()
+            
+               
+            y.Price=y.Price*i.Items
+            z=SellerBooks(BookName1=y.BookName1,Seller=y.Seller,Buyers=request.user.username,Price=y.Price,BuyerAddr=s.address,Mobile=s.mobile,Items=i.Items)
+            z.save()
+            
 
 
         cart.objects.all().delete()

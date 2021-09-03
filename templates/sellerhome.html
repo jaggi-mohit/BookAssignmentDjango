@@ -59,7 +59,7 @@
       <div class="row">
       {%for i in data%}
       {% if i.unique == True%}
-      <div class="col-3" ><img class="rounded-square account-img" src="{{i.BookImg.url}}" width='200px' height='200px' id="img2" ><div id="inner" ><span id="bname">{{i.BookName1}}</span><span id='price' > Price: &#8377;{{i.Price}}</span> 
+      <div class="col-3" ><img class="rounded-square account-img" src="{{i.BookImg.url}}" width='100%' height='200px' id="img2" ><div id="inner" ><span id="bname">{{i.BookName1}}</span><span id='price' > Price: &#8377;{{i.Price}}</span> 
   <br>
   <a href="{% url 'edit' i.id %}"><i class="fas fa-edit" data-toggle="modal" data-target="#exampleModal1" style="color:lightgreen"></i></a>
 <a href="{% url 'del' i.id %}"> <i class="fas fa-trash-alt" style="color:red;"></i></a></div></div>
