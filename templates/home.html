@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap\bootstrap-4.6.0-dist\css\bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+    <!-- slick CSS only -->
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Book+</title>
+</head>
+<body style="background-color:rgb(11, 48, 63);">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-black" style="background-color:black;width:100%;">
+  <a class="navbar-brand" href="#">Book+</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          More
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'myorder' %}">My Orders</a>
+          
+          
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'logout' %}">Logout</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" style="margin-right:20px;" method="POST" action="{% url 'search'%}">
+    {% csrf_token %}
+      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      
+    </form>
+    <form class="form-inline my-2 my-lg-0" style="margin-right:-10px;">
+    <a href="{% url 'profile'%}"><i class="fa fa-user" aria-hidden="true" style="color:white;font-size:27px;margin-right:10px;"></i></a>
+    <a href="{% url 'add'%}"><i class="fas fa-shopping-cart" style="color:white;font-size:20px;"></i></a>
+</form>
+
+  </div>
+</nav>
+{% block content %}
+      <div class="row">
+      {%for i in data%}
+      {% if i.unique == True%}
+      <div class="col-3"  ><img class="rounded-square account-img" src="{{i.BookImg.url}}" width='100%' height='200px' id="img2"><div id="inner" ><span id="bname">{{i.BookName1}}</span><span id='price' > Price: &#8377;{{i.Price}}</span></div>
+      <form method="POST" action="{% url 'add'  %}">{% csrf_token %}<input type="text" style="display:none" value={{i.id}} name="subm" ><input type="submit" value="Add To Cart" style="float:right;color:black;"></input></form></div>
+      {% endif %}
+      {% endfor %}
+      </div>
+    
+{% endblock %}
+</body>
+</html>

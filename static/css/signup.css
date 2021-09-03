@@ -1,0 +1,294 @@
+
+		.img{
+			height: 100px;
+			width: 150px;
+			margin-top: 10px;
+		}
+		#h1{
+			margin-top: 97px;
+		}
+		div.outer{
+			background-color: black;
+			height:120px;
+			margin-top: 0px;
+			
+		}
+		#nav{
+			position: fixed;
+		}
+		.a1{
+			color: white;
+			text-decoration: none;
+			float: right;
+			margin-top: 40px;
+			
+			border-radius: 20px;
+			font-size: 25px;
+			margin-right: 50px;
+		}
+
+		.a2{
+			color: white;
+			text-decoration: none;
+			float: right;
+			margin-top: 40px;
+			border-radius: 20px;
+			font-size: 25px;
+			margin-right: 10px;
+
+		}
+
+		.login{
+			width: 150px;
+			text-align: center;
+		}
+		.contact{
+			width: 200px;
+			text-align: center;
+				}
+
+		li{
+		display: inline;
+		}
+
+		.a1:hover{
+			color: skyblue;
+			text-decoration: none;
+			border-color: green;
+			
+
+		}
+		.a2:hover{
+			color: skyblue;
+			text-decoration: none;
+		}
+
+		body{
+			background-color: rgb(11, 48, 63);
+			font-family: 'New Tegomin', serif;
+    		font-weight:bold;
+		}
+		#msg{
+			display: none;
+			text-align: center;
+			color: red;
+			font-size: 13px;
+		}
+
+		#text{
+			margin-left: 20px;
+			display: none;
+			font-size: 13px;
+			color: red;
+		}
+		#result{
+			margin-left: 20px;
+			font-size: 13px;
+		}
+		#carouselExampleIndicators{
+			width: 770px;
+			height: 480x;
+			margin-top: 70px;
+			margin-left: 25px;
+			display: inline;
+			float:left;
+			
+
+		}
+        div.image1{
+			height: 500px;
+			width: 450px;
+			margin-top: 75px;
+			margin-left: 25px;
+			display: inline;
+			float: left;
+			}
+		#select{
+			width:450px;
+			border:none;
+			outline: none;
+			margin-left: 20px;
+			opacity: 0.8;
+
+		}
+		input[type=text]{
+			width: 300px;
+			outline: none;
+			border:none;
+			margin-left: 20px;
+
+		}
+		textarea{
+			width:400px;
+			outline: none;
+			border:none;
+			margin-left: 20px;
+		}
+		input[type=password],input[type=email]{
+			width: 300px;
+			outline: none;
+			border:none;
+			margin-left: 20px;
+
+
+		}
+		#name,#name2{
+        width:200px;
+
+		}
+		div.form1{
+			width:510px;
+			height: 500px;
+			border:2px solid transparent;
+			border-radius: 20px;
+			background-color: white;
+			margin-right: 25px;
+			display: inline;
+			float: right;
+			margin-top: 50px;
+		}
+		form{
+			margin-left: 20px;
+			margin-top: 10px;
+		}
+		hr{
+			margin-left: 20px;
+			margin-right: 20px;
+			opacity: 0.3;
+			margin-top: 10px;
+		}
+		label{
+			margin-left: 25px;
+		}
+
+		#disabled{
+			background-color: transparent;
+			
+		}
+		input[type=checkbox]{
+			margin-left: 5px;
+
+		}
+		input[type=submit]{
+			border:2px solid white;
+			border-radius: 30px;
+			width: 200px;
+			height: 50px;
+			font-size: 18px;
+			margin-left: 150px;
+			background-color: skyblue;
+			color: white;
+			font-weight: bold;
+		}
+		
+		div.why1{
+			margin-top: 560px;
+			height: 300px;
+			border:2px solid white;
+			background-color: white;
+			font-weight: bold;
+
+			
+
+		}
+		div.text{
+			height:230px;
+			
+			width: 300px;
+			
+			display: inline-table;
+			margin-left: 220px;
+			text-align: center;
+			
+		}
+		div.text2{
+		display: inline-table;
+		
+		width: 300px;
+		height: 230px;
+		text-align: center;
+
+		}
+		div.text3{
+		display: inline-table;
+		
+		width: 300px;
+		height: 230px;
+		text-align: center;
+
+		}
+		div.text4{
+		display: inline-table;
+		
+		width: 300px;
+		height: 230px;
+		text-align: center;
+
+		}
+		div.text i{
+			font-size: 80px;
+			color: black;
+			
+		}
+		div.text2 i{
+			font-size: 80px;
+			margin-top: 0px;
+			
+		}
+		div.text3 i{
+			font-size: 80px;
+			margin-top: 0px;
+			
+		}
+		div.text4 i{
+			font-size: 80px;
+			margin-top: 0px;
+			
+		}
+		nav{
+			display: block;
+			position: fixed;
+			z-index: 2;
+			width: 100%;
+		}
+		.carousel-indicators{
+			z-index: 1;
+		}
+		div.footer{
+			width:100%;
+			
+			margin-top: 70px;
+			background-color: white;
+			height: 200px;
+		}
+		address{
+			text-align: center;
+		}
+ /* responsiveness using media query      */
+		@media screen and (max-width: 700px){
+ 	li{
+ 		display:block;
+
+ 	}
+ 	
+ 	.img{
+ 		margin-top: 0px;
+ 		height: 100px;
+ 		width: 100px;
+ 	}
+ 	a.a1{
+ 		float: left;
+ 		font-size: 15px;
+ 		
+ 		margin-top: 0px;
+ 	}
+ 	.contact{
+
+ 		width: 100px;
+ 	}
+ 	div.outer{
+ 		background-color: black;
+ 		height: 150px;
+ 	}
+
+ }

@@ -1,0 +1,31 @@
+div.col-3{
+border: 2px solid black;
+margin-left: 90px;
+margin-top:20px;
+border-radius: 10px ;
+width:400px;
+
+}
+#inner{
+    color:white;
+    background-color:black;
+    width:340px;
+    margin-left: -15px ;
+    
+
+}
+
+#img2{
+  
+
+}
+
+ #price{
+    
+   margin-left: 150px;
+}
+
+#bname{
+margin-left: 10px;
+
+}

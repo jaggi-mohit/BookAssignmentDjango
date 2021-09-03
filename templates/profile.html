@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+{% extends 'home.html' %}
+{% load static %}
+ 
+<head>
+{% block content %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap\bootstrap-4.6.0-dist\css\bootstrap.css' %}">
+    <title>Profile</title>
+</head>
+<body class="body">
+ 
+ {% if messages %}
+
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="h1">
+  <strong>{{message}}</strong> 
+  
+</div>
+
+
+{% endfor %}
+{% endif %}
+   {% for dt in data %}
+   
+   
+    <div class="content-section">
+  <div class="media">
+  
+   <img class="rounded-circle account-img" src="{{user.customer.ProfilePhoto.url}}" width='200px' height='200px' id="img2">
+
+   
+    <div class="media-body">
+      <h2 class="account-heading">Username: {{user.username}}</h2><br>
+      <h4 class="text-secondary">Name: {{user.first_name}} {{user.last_name}}</h4><br>
+      <h4 class="text-secondary">Address:{{dt.address}}
+      </h4><br>
+      <h4 class="text-secondary">Mobile Number: {{dt.mobile}}</h4><br>
+      <!-- Button trigger modal -->
+
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" style="margin-left:600px;">
+  <i class="fas fa-edit"></i></button>
+    </div>
+    
+    
+  </div>
+  
+  <form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" id="img" name="myfiles" accept="image/*"><br>
+  <input type="submit" value="Upload Image" disabled>
+  </form>
+  
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form style="margin-left:0px;" method="POST" action='{% url 'update' %}'>
+        {% csrf_token %}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">First Name</label>
+      <input type="text" class="form-control" id="inputEmail4"  name="fname" placeholder="Enter FName" required='true' value={{user.first_name}} >
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Last Name</label>
+      <input type="text" class="form-control" id="inputPassword4" name="lname" placeholder="Enter LName" required='true' value={{user.last_name}}  >
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress"  name="addrs" placeholder="Enter Address" value={{dt.address}}  required='true'>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Email </label>
+    <input type="email" class="form-control" id="inputAddress2" name="mail" placeholder="Enter Email" value={{user.username}}  required='true'>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Mobile</label>
+      <input type="Number" class="form-control" id="inputCity" name="mob" value={{dt.mobile}}  required='true'>
+    </div>
+    </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+      
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<script>
+$(document).ready(
+    function(){
+        $('input:file').change(
+            function(){
+                if ($(this).val()) {
+                    $('input:submit').attr('disabled',false);
+                    // or, as has been pointed out elsewhere:
+                    // $('input:submit').removeAttr('disabled'); 
+                } 
+            }
+            );
+    });
+</script>
+</body>
+{% endblock %}
+</html>

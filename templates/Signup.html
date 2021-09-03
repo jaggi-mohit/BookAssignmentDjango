@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+	<title>Book+</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap\bootstrap-4.6.0-dist\css\bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/signup.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<!--Nav bar-->
+<nav>
+	<div class="outer">
+	<ul>
+		<li>
+			<a href="">
+				<img class="img"   src="{% static 'images/bk.png' %}" >
+			</a>
+		</li>
+		<li>
+			<a href="#" class="a1">
+				<div class="contact">Contact Us <i class="fa fa-phone" style="color:skyblue" ></i></div>
+			</a>
+		</li>
+		<li>
+			<a href="{% url 'login' %}" class="a2">
+				<div class="login">
+				 Login
+				</div>
+			</a>
+		</li>
+	</ul>
+	</div>
+</nav>
+
+{% if messages %}
+<br>
+{% for message in messages %}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="h1">
+  <strong>{{message}}</strong> 
+  
+</div>
+
+
+{% endfor %}
+<script>
+$(document).ready(function(){
+	$('.image1').css('margin-top','-20px')
+	$('div.form1').css('margin-top','-45px')
+
+})
+</script>
+{% endif %}
+<br><br><br>
+<br>
+<div class="image1">
+<img src="{% static 'images/books.jpg' %}" height="450px" width="750px" >
+</div>
+<div class="form1">
+<br>
+<form method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+	<h4 align="center" style="font-weight:bold;margin-top:-10px;">Enter Your Details Below!</h4><br>
+	
+	<input type="text" name="name1" placeholder="First Name *" required="true" id="name" maxlength="25">
+    <input type="text" name="name2" placeholder="Last Name *" required="true" id="name2" maxlength="25">
+	<hr>
+	<textarea name="addr" placeholder="Address" required="true" row='5' ></textarea>
+	<hr>
+	
+	
+	<input type="email" name="email" placeholder="Enter Email-Id *" required="true">
+	<hr>
+	
+	<input type="password" name="password" placeholder="Enter password *" id="password" required="true">
+	<p id="result"></p>
+	<hr>
+	
+	<input type="password" name="" placeholder="Confirm your password *" id="conPassword">
+	<p id="CheckPasswordMatch"></p>
+	<hr>
+	<p id="msg">password is Weak cannot submit the form </p>
+	<input type="submit" name="" value="Register For Free" id="submit"  >
+	
+</form>
+</div>
+
+<br>
+<br>
+<div class="why1">
+	<h1 align="center">What is Book+ ?</h1><br>
+	<div class="text"><br>
+		<i class='fas fa-brain'></i><br>
+		Book your Book<br>
+		platform to purchase Books at reasonable price.
+	</div>
+	<div class="text2"><br>
+		<i class="fas fa-dice"></i><br>
+		Easy to purchase.<br> 
+</div>
+<div class="text3"><br>
+	<i class="fas fa-sticky-note"></i><br>
+	Latest Books available.
+</div>
+
+</div>
+<div class="footer"><br><br>
+	<address>
+	<font size="5px">Email Us: query@mohit.com</font><br>
+	<font size="3px">D-58, Red FM Road, Sector 5, C Block, Noida, Uttar Pradesh 201301,India</font><br><br><br>
+	<b>All Rights Reserved 2021</b>
+	</address>
+	
+</div>
+<script>
+$(document).ready(function() {
+
+
+ 
+
+ 
+    $('#password').keyup(function(){
+        $('#result').html(checkStrength($('#password').val()))
+    }) 
+	function checkPasswordMatch() {
+		var confirmPassword = $("#conPassword").val();
+        var password = $("#password").val();
+        
+        if (password != confirmPassword ) {
+            $("#CheckPasswordMatch").html("<p style='color:red;font-size:13px;margin-left:20px;'>Passwords does not match!</p>")
+			$('input:submit').attr("disabled", true);
+		}
+        else{
+            $("#CheckPasswordMatch").html("<p style='color:green;font-size:13px;margin-left:20px;'>Passwords match.</p>")
+			$('input:submit').attr("disabled", false);
+			}
+    }
+   
+       $("#conPassword").keyup(checkPasswordMatch);
+	   $("#password").keyup(checkPasswordMatch);
+	function checkStrength(password){
+		 //initial strength 
+		 var strength = 0
+		 //if the password length is less than 6, return message. 
+		 if (password.length < 6) { 
+			 $('#result').removeClass()
+			  $('#result').addClass('short') 
+			  $('#result').css('color','red')
+			  $('input:submit').attr("disabled", true);
+				
+				$('#msg').css('display','block')
+			  return 'Too short' }
+		 //length is ok, lets continue. 
+		 //if length is 8 characters or more, increase strength value
+		  if (password.length > 7) strength += 1
+		  //if password contains both lower and uppercase characters, increase strength value 
+		  if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength += 1
+		  //if it has numbers and characters, increase strength value 
+		  if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) strength += 1
+		  //if it has one special character, increase strength value 
+		  if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+		  //if it has two special characters, increase strength value 
+		  if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,",%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+		  //now we have calculated strength value, we can return messages 
+		  //if value is less than 2 
+		  if (strength < 2 ) {
+			   $('#result').removeClass()
+			    $('#result').addClass('weak')
+				$('#result').css('color','red')
+				$('input:submit').attr("disabled", true);
+				
+				$('#msg').css('display','block')
+
+				
+				 return 'Weak'
+		  } 
+		  else if (strength == 2 ) {
+			   $('#result').removeClass() 
+			   $('#result').addClass('good') 
+			   $('#result').css('color','orange')
+			   $('input:submit').attr("disabled", false);
+			   $('#msg').css('display','none')
+			   return 'Good' } 
+			   else { 
+				$('#result').removeClass()
+			    $('#result').addClass('strong')
+				$('#result').css('color','green')
+				$('input:submit').css('pointer-events','')
+				$('#msg').css('display','none')
+				 return 'Strong' }
+				  }
+				  
+			$(".a1").click(function() {
+    		$('html,body').animate({
+        	scrollTop: $(".footer").offset().top},
+        	'slow');
+				});
+				  
+				
+				   });
+				   
+
+</script>
+
+</body>
+</html>

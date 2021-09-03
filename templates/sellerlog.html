@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    {% load static %}
+<head>
+	<title>Book+</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap\bootstrap-4.6.0-dist\css\bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav>
+	<div class="outer">
+	<ul>
+		<li>
+			<a href="">
+				<img class="img"   src="{% static 'images/bk.png' %}" >
+			</a>
+		</li>
+		<li>
+			<a href="" class="a1">
+				<div class="contact">Contact Us <i class="fa fa-phone" style="color: skyblue" ></i></div>
+			</a>
+		</li>
+		<li>
+			<a href="http://127.0.0.1:8000/" class="a2">
+				<div class="signup">
+				 Signup
+				</div>
+			</a>
+		</li>
+	</ul>
+	</div>
+</nav>
+{% if messages %}
+<br>
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="h1">
+  <strong>{{message}}</strong> 
+  
+</div>
+
+
+{% endfor %}
+<script>
+$(document).ready(function(){
+	$('div.image1').css('margin-top','-0px')
+	$('div.form1').css('margin-top','-23px')
+
+})
+</script>
+{% endif %}
+<br><br><br>
+<div class="image1">
+<img src="{% static 'images/book1.jpg' %}" height="450px" width="750px" >
+</div>
+<br>
+
+<div class="form1">
+<form method="POST" action="">
+{% csrf_token %}
+	<h3 align="center" style="font-family: 'New Tegomin', serif;
+    font-weight:bold;">Seller Login !</h3>
+	<br>
+	<input type="text" name="Email" placeholder="Enter Email-Id *">
+	<hr>
+	
+	<input type="password" name="password" placeholder="Enter password *">
+	<hr>
+	
+	<input type="submit" name="" value="Login" ><br>
+	
+</form>
+</div>
+<div class="footer"><br><br>
+	<address>
+	<font size="5px">Email Us: query@cetpainfotech.com</font><br>
+	<font size="3px">D-58, Red FM Road, Sector 2, D Block, Noida, Uttar Pradesh 201301,India</font><br><br><br>
+	<b>All Rights Reserved 2021</b>
+	</address>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'home.html' %}
+{% load static %}
+<head>
+{% block content %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book+</title>
+</head>
+<body>
+    <table class="table" style="color:white;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Items</th>
+      <th scope="col">BookName</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  {%for i in dt%}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.Items}}</td>
+      <td>{{i.Name}}</td>
+      <td>{{i.sum}}</td>
+      <td><a href="{% url 'delete' i.id %}"> <i class="fas fa-trash-alt" style="color:red;"></i></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tbody>
+  <tr>
+  
+  <th>Grand Total:{{sum}}</th>
+  <td><form action="{% url 'myorder' %}" method="POST">{% csrf_token %}<input type="submit" value="PayNow" style="color:white;background-color:black"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+{% endblock  %}
+</html>

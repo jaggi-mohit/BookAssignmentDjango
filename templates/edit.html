@@ -1,0 +1,81 @@
+<html lang="en">
+{% extends 'home.html' %}
+{% load static %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book+</title>
+</head>
+<body>
+    {% block content%}
+    <br><br><br>
+    <tr>
+        <br><br><br>
+        {% for i in x%}
+      <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Books</h5>
+        
+          
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" method="POST" action='{% url 'edit' i.id %}' enctype="multipart/form-data" >
+        {% csrf_token %}
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Book name</label>
+      <input type="text" class="form-control" id="validationCustom01" placeholder="Book name" name="bname"  required='true' value={{i.BookName1}}>
+      
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom02">Book Price</label>
+      <input type="Number" class="form-control" id="validationCustom02" placeholder="Book Price" name='bookp' required='true' value={{i.Price}}>
+      
+    </div>
+    <div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFile" required='true' name="myfiles"  >
+  <label class="custom-file-label" for="customFile">Choose Book Img</label>
+</div>
+  </div>
+  
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+      {% endfor %}
+      <!--
+      {% if question %}
+      <th scope="row" style="background-color:gray;color:white;"> <b class="sub"> Add Your Question:</b><br>
+      <form action="{% url 'addquestion'  %}" method='post' >
+      {% csrf_token %}
+      <textarea placeholder="type your answer here" class="textarea" name='txtarea' style="background-color:lightgray;border-radius:10px;"></textarea>
+      <input type="submit">
+      </form></th>
+        {% endif %}
+        -->
+        <br><br>
+        {% if add %}
+        <th scope="row" style="background-color:gray;color:white;"> <b class="sub" >Type Your Answer:</b><br>
+      <form action="{% url 'addans' add %}" method='post' >
+      {% csrf_token %}
+      <textarea placeholder="type your answer here" class="textarea" name='txtarea' style="background-color:lightgray;border-radius:10px;"></textarea>
+      <input type="submit">
+      </form></th>
+      {% endif %}
+    
+      
+    </tr>
+     {% endblock %}
+</body>
+</html>

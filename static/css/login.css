@@ -1,0 +1,151 @@
+.img{
+    height: 100px;
+    width: 150px;
+    margin-top: 10px;
+}
+div.outer{
+    background-color: black;
+    height:120px;
+    width: 100%;
+
+}
+nav{
+    display: block;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.a1{
+    color: white;
+    text-decoration: none;
+    float: right;
+    margin-top: 40px;
+    
+    border-radius: 20px;
+    font-size: 25px;
+    margin-right: 50px;
+    font-family: 'New Tegomin', serif;
+    font-weight:bold;
+}
+
+.a2{
+    color: white;
+    text-decoration: none;
+    float: right;
+    margin-top: 40px;
+    border-radius: 20px;
+    font-size: 25px;
+    margin-right: 10px;
+    font-family: 'New Tegomin', serif;
+    font-weight:bold;
+
+}
+.signup{
+    width: 150px;
+    text-align: center;
+}
+.contact{
+    width: 200px;
+    text-align: center;
+        }
+
+
+li{
+display: inline;
+}
+
+.a1:hover{
+    color: skyblue;
+    text-decoration: none;
+    border-color: green;
+    
+
+}
+.a2:hover{
+    color: skyblue;
+    text-decoration: none;
+}
+
+body{
+    background-color: rgb(11, 48, 63);
+    font-family: 'New Tegomin', serif;
+    font-weight:bold;
+}
+#h1{
+    margin-top: 90px;
+}
+
+
+div.image1{
+height: 500px;
+width: 450px;
+margin-top: 75px;
+margin-left: 25px;
+display: inline;
+float: left;
+}
+
+input[type=text]{
+    width: 300px;
+    outline: none;
+    border:none;
+    margin-left: 20px;
+
+}
+input[type=password]{
+    width: 300px;
+    outline: none;
+    border:none;
+    margin-left: 20px;
+
+}
+div.form1{
+    width:510px;
+    height: 453px;
+    border:2px solid transparent;
+    border-radius: 20px;
+    background-color: white;
+    margin-right: 25px;
+    display: inline;
+    float: right;
+    margin-top: 50px;
+}
+form{
+    margin-left: 20px;
+    margin-top: 90px;
+}
+hr{
+    margin-left: 20px;
+    margin-right: 20px;
+    opacity: 0.3;
+    margin-top: 10px;
+}
+
+
+input[type=submit]{
+    border:2px solid white;
+    border-radius: 30px;
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    margin-left: 150px;
+    background-color: skyblue;
+    color: white;
+    font-weight: bold;
+    margin-top: 50px;
+}
+div.footer{
+    width:100%;
+    
+    margin-top: 700px;
+    background-color: white;
+    height: 200px;
+    text-align: center;
+
+
+}
+#admin:hover{
+    text-decoration: none;
+    color:red;
+}
