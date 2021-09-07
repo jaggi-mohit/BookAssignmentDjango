@@ -151,9 +151,10 @@ def myorder(request):
             z=SellerBooks(BookName1=y.BookName1,Seller=y.Seller,Buyers=request.user.username,Price=y.Price,BuyerAddr=s.address,Mobile=s.mobile,Items=i.Items)
             z.save()
             
-
-
-        cart.objects.all().delete()
+        c=cart.objects.filter(users_id=request.user.id)
+        for i in c :
+            c.delete()
+        
         
 
     ord=BooksPurch.objects.filter(Buyer_id=request.user.id)
